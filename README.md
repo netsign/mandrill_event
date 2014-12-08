@@ -1,6 +1,6 @@
 # MandrillEvent
 
-TODO: Write a gem description
+MandrillEvent is built on the ActiveSupport::Notifications API. Incoming webhook requests are authenticated. Define subscribers to handle specific event types. Subscribers can be a block or an object that responds to #call.
 
 ## Installation
 
@@ -14,13 +14,13 @@ And then execute:
 
     $ bundle
 
-Or install it yourself as:
-
-    $ gem install mandrill_event
-
 ## Usage
 
 TODO: Write usage instructions here
+
+## Thanks
+
+MandrillEvent takes inspiration directly from the [stripe_event](https://github.com/integrallis/stripe_event) gem.
 
 ## Contributing
 
