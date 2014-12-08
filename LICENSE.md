@@ -1,4 +1,4 @@
-Copyright (c) 2014 Weston Triemstra
+Copyright (c) 2014 Netsign Communications Inc.
 
 MIT License
 
