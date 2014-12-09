@@ -1,5 +1,6 @@
-require 'mandrill_event/version'
 require 'active_support/notifications'
+require 'mandrill_event/version'
+require 'mandrill_event/engine' if defined?(Rails)
 
 module MandrillEvent
 

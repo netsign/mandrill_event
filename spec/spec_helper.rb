@@ -1,3 +1,4 @@
+require 'pry'
 require File.expand_path('../../lib/mandrill_event', __FILE__)
 
 # Dir[File.expand_path('../spec/support/**/*.rb', __FILE__)].each { |f| require f }
