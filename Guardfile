@@ -25,10 +25,10 @@ guard :rspec, cmd: "bundle exec rspec" do
   watch(rspec.spec_helper)      { rspec.spec_dir }
 
   # Rails example
-  # rails = OpenStruct.new
+  rails = OpenStruct.new
   # rails.app = %r{^app/(.+)\.rb$}
   # rails.views_n_layouts = %r{^app/(.*)(\.erb|\.haml|\.slim)$}
-  # rails.controllers = %r{^app/controllers/(.+)_controller\.rb$}
+  rails.controllers = %r{^app/controllers/(.+)_controller\.rb$}
   # rails.routes = "config/routes.rb"
   # rails.app_controller = "app/controllers/application_controller.rb"
   # rails.spec_helper = "spec/rails_helper.rb"
@@ -37,13 +37,13 @@ guard :rspec, cmd: "bundle exec rspec" do
 
   # watch(rails.app) { |m| rspec.spec.(m[1]) }
   # watch(rails.views_n_layouts) { |m| rspec.spec.("#{m[1]}#{m[2]}") }
-  # watch(rails.controllers) do |m|
-  #   [
-  #     rspec.spec.("routing/#{m[1]}_routing"),
-  #     rspec.spec.("controllers/#{m[1]}_controller"),
-  #     rspec.spec.("acceptance/#{m[1]}")
-  #   ]
-  # end
+  watch(rails.controllers) do |m|
+    [
+      rspec.spec.("routing/#{m[1]}_routing"),
+      rspec.spec.("controllers/#{m[1]}_controller"),
+      rspec.spec.("acceptance/#{m[1]}")
+    ]
+  end
 
   # watch(rails.spec_support)    { rspec.spec_dir }
   # watch(rails.spec_helper)     { rspec.spec_dir }
