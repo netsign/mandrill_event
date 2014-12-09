@@ -20,7 +20,7 @@ TODO: Write usage instructions here
 
 ## Thanks
 
-MandrillEvent takes inspiration directly from the [stripe_event](https://github.com/integrallis/stripe_event) gem.
+MandrillEvent takes inspiration directly from the [stripe_event](https://github.com/integrallis/stripe_event) gem, which takes it's inspiration from [Webmachine](https://github.com/seancribbs/webmachine-ruby/blob/6edaecea1ceab7c2c54fc5e83446317524f6bb8b/lib/webmachine/events.rb), which is inspired by Erlang. It's turtles all the way down.
 
 ## Contributing
 
