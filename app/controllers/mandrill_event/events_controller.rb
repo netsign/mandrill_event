@@ -1,5 +1,10 @@
 module MandrillEvent
   class EventsController < ActionController::Base
+
+    def index
+      head :ok
+    end
+
     def create
       MandrillEvent.instrument(params)
       head :ok

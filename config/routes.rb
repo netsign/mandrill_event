@@ -1,3 +1,3 @@
 MandrillEvent::Engine.routes.draw do
-  resource :events, only: [:show, :create]
+  resources :events, only: [:index, :create]
 end
