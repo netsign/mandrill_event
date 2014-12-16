@@ -6,7 +6,7 @@ module MandrillEvent
     end
 
     def create
-      MandrillEvent.instrument(params)
+      MandrillEvent.process(params)
       head :ok
     # rescue MandrillEvent::UnauthorizedError
     #   head :unauthorized

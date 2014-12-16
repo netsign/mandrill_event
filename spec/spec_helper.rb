@@ -1,7 +1,7 @@
 require 'pry'
 require File.expand_path('../../lib/mandrill_event', __FILE__)
 
-# Dir[File.expand_path('../spec/support/**/*.rb', __FILE__)].each { |f| require f }
+Dir[File.expand_path('../support/**/*.rb', __FILE__)].each { |f| require f }
 
 RSpec.configure do |config|
   config.order = 'random'
@@ -9,6 +9,8 @@ RSpec.configure do |config|
   config.expect_with :rspec do |c|
     c.syntax = :expect
   end
+
+  config.include WebhookRequest
 
   # config.before do
   #   @event_retriever = MandrillEvent.event_retriever

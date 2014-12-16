@@ -1,6 +1,7 @@
 require 'active_support/notifications'
 require 'mandrill_event/version'
 require 'mandrill_event/engine' if defined?(Rails)
+require 'json'
 
 module MandrillEvent
 
@@ -10,6 +11,12 @@ module MandrillEvent
     def configure(&block)
       raise ArgumentError, 'must provide a block' unless block_given?
       block.arity.zero? ? instance_eval(&block) : yield(self)
+    end
+
+    def process(params)
+      JSON.parse(params['mandrill_events'] || '[]').each do |event_params|
+        instrument(event_params)
+      end
     end
 
     def instrument(params)

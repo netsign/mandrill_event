@@ -18,6 +18,19 @@ describe MandrillEvent do
 
   end
 
+  describe '.process' do
+
+    let(:json) { webhook_example_events('rejects') }
+    let(:params) { {'mandrill_events' =>  json} }
+
+    it 'calls instrument for each event' do
+      MandrillEvent.subscribe('reject', subscriber)
+      MandrillEvent.process(params)
+      expect(events).to eq JSON.parse(json)
+    end
+
+  end
+
   describe 'subscribing to a specific event type' do
 
     before do

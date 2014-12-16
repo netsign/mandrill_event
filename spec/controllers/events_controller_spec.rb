@@ -24,9 +24,17 @@ describe MandrillEvent::EventsController, :type => :controller do
 
     describe 'POST create' do
 
+      let(:params) { {mandrill_events: webhook_example_events('rejects')} }
+
       it 'returns status 200' do
-        webhook event: :reject, foo: :bar
+        webhook params
         expect(response.code).to eq('200')
+      end
+
+      it 'calls MandrillEvent.process' do
+        allow(MandrillEvent).to receive(:process).and_return(true)
+        expect(MandrillEvent).to receive(:process)
+        webhook params
       end
 
     end
