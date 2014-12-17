@@ -13,3 +13,6 @@
 *.a
 mkmf.log
 spec/dummy/log
+/.ruby-version
+/.ruby-gemset
+
