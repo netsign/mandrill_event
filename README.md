@@ -1,3 +1,5 @@
+[![Gem Version](https://badge.fury.io/rb/mandrill_event.svg)](http://badge.fury.io/rb/mandrill_event)
+
 # MandrillEvent
 
 MandrillEvent is built on the ActiveSupport::Notifications API. Define subscribers to handle specific event types. Subscribers can be a block or an object that responds to #call.
