@@ -9,7 +9,7 @@ MandrillEvent is built on the ActiveSupport::Notifications API. Define subscribe
 
 ```ruby
 # Gemfile
-gem 'mandrill_event', github: 'netsign/mandrill_event'
+gem 'mandrill_event'
 ```
 
 And then execute:
