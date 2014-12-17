@@ -45,6 +45,11 @@ class RejectHandler
 end
 ```
 
+### Configure Mandrill webhooks to use your endpoint
+
+At the Mandrill website, create a webhook that points to your server with the path `/mandrill/events`. A service like [Ngrok](https://ngrok.com/) or [Ultrahook](http://www.ultrahook.com/) can be really useful in creating a tunnel to your local server and inspecting the request payloads.
+
+
 ## Thanks
 
 MandrillEvent ~~takes inspiration from~~ is a direct rip-off of the [stripe_event](https://github.com/integrallis/stripe_event) gem, which takes it's inspiration from [Webmachine](https://github.com/seancribbs/webmachine-ruby/blob/6edaecea1ceab7c2c54fc5e83446317524f6bb8b/lib/webmachine/events.rb), which is inspired by Erlang. It's turtles all the way down.
