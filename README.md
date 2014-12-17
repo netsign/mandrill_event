@@ -1,13 +1,15 @@
 # MandrillEvent
 
-MandrillEvent is built on the ActiveSupport::Notifications API. Incoming webhook requests are authenticated. Define subscribers to handle specific event types. Subscribers can be a block or an object that responds to #call.
+MandrillEvent is built on the ActiveSupport::Notifications API. Define subscribers to handle specific event types. Subscribers can be a block or an object that responds to #call.
+
 
 ## Installation
 
-Add this line to your application's Gemfile:
+### Add it to your Gemfile
 
 ```ruby
-gem 'mandrill_event'
+# Gemfile
+gem 'mandrill_event', github: 'netsign/mandrill_event'
 ```
 
 And then execute:
@@ -16,11 +18,46 @@ And then execute:
 
 ## Usage
 
-TODO: Write usage instructions here
+### Mount the engine in your routes
+
+```ruby
+# config/routes.rb
+  mount MandrillEvent::Engine => '/mandrill'
+```
+
+### Setup the initializer
+
+```ruby
+# config/initializers/mandrill_event.rb
+MandrillEvent.configure do |events|
+  events.subscribe 'reject', RejectHandler.new
+end
+```
+
+### Create subscriber objects that respond to #call
+
+```ruby
+# app/mandrill_handlers/reject_handler.rb
+class RejectHandler
+  def call(event)
+    # your code here
+  end
+end
+```
 
 ## Thanks
 
-MandrillEvent takes inspiration directly from the [stripe_event](https://github.com/integrallis/stripe_event) gem, which takes it's inspiration from [Webmachine](https://github.com/seancribbs/webmachine-ruby/blob/6edaecea1ceab7c2c54fc5e83446317524f6bb8b/lib/webmachine/events.rb), which is inspired by Erlang. It's turtles all the way down.
+MandrillEvent ~~takes inspiration from~~ is a direct rip-off of the [stripe_event](https://github.com/integrallis/stripe_event) gem, which takes it's inspiration from [Webmachine](https://github.com/seancribbs/webmachine-ruby/blob/6edaecea1ceab7c2c54fc5e83446317524f6bb8b/lib/webmachine/events.rb), which is inspired by Erlang. It's turtles all the way down.
+
+
+## TODO:
+
+* More test coverage
+* Incoming webhook requests are authenticated
+* Get it on Coveralls
+* Get it on Travis
+* Get it on Code Climate
+
 
 ## Contributing
 
