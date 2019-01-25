@@ -1,44 +1,31 @@
 require 'rails_helper'
-require 'spec_helper'
 
-describe MandrillEvent::EventsController, :type => :controller do
-
-  def webhook(params)
-    post :create, params.merge(use_route: :mandrill)
-  end
+RSpec.describe MandrillEvent::EventsController, type: :controller do
+  routes { ::MandrillEvent::Engine.routes }
 
   context 'mandrill checks for working endpoint' do
-
     describe 'HEAD index' do
-
       it 'returns status 200' do
-        head :index, use_route: :mandrill
-        expect(response.code).to eq('200')
+        head :index
+        expect(response).to have_http_status(:ok)
       end
-
     end
-
   end
 
   context 'with valid event params' do
-
     describe 'POST create' do
-
       let(:params) { {mandrill_events: webhook_example_events('rejects')} }
 
       it 'returns status 200' do
-        webhook params
-        expect(response.code).to eq('200')
+        post :create, params: params
+        expect(response).to have_http_status(:ok)
       end
 
       it 'calls MandrillEvent.process' do
         allow(MandrillEvent).to receive(:process).and_return(true)
         expect(MandrillEvent).to receive(:process)
-        webhook params
+        post :create, params: params
       end
-
     end
-
   end
-
 end
