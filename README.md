@@ -32,16 +32,16 @@ And then execute:
 ```ruby
 # config/initializers/mandrill_event.rb
 MandrillEvent.configure do |events|
-  events.subscribe 'reject', RejectHandler.new
+  events.subscribe 'reject', RejectHandler
 end
 ```
 
-### Create subscriber objects that respond to #call
+### Subscriber responds to call
 
 ```ruby
 # app/mandrill_handlers/reject_handler.rb
 class RejectHandler
-  def call(event)
+  def self.call(event)
     # your code here
   end
 end
@@ -59,10 +59,11 @@ MandrillEvent ~~takes inspiration from~~ is a direct rip-off of the [stripe_even
 
 ## TODO:
 
+* Get it on Travis
+* Write docs with RDoc/YARD
 * More test coverage
 * Incoming webhook requests are authenticated
 * Get it on Coveralls
-* Get it on Travis
 * Get it on Code Climate
 
 
