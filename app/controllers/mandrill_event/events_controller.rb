@@ -1,6 +1,6 @@
 module MandrillEvent
   class EventsController < ActionController::Base
-    protect_from_forgery with: :null_session
+    skip_before_action :verify_authenticity_token, raise: false
 
     def index
       head :ok
